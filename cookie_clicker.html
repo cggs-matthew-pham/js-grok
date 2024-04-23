@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cookie Clicker</title>
+</head>
+<body>
+    <button id="get-cookies" onclick="getCookies()">Get Cookies</button>
+    <label id="display-cookies">0</label>
+    <script>
+        // JavaScript code
+        var cookies = 0;
+        var button = document.getElementById("get-cookies");
+        var label = document.getElementById("display-cookies");
+        function getCookies() {
+            cookies += 1;
+            label.textContent = cookies;
+        }
+    </script>
+</body>
+</html>

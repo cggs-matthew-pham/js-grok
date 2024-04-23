@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact List</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact List</h1>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" />
+    <br><br>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" />
+    <br><br>
+
+    <button id="add-contact" onclick="addContact()">Add Contact</button><br><br>
+
+    <select id="select-contact" onchange="selectContact()"></select><br><br>
+
+    <button id="edit-contact" onclick="editContact()">Edit Contact</button>
+    <button id="delete-contact" onclick="deleteContact()">Delete Contact</button><br><br>
+
+    <table id="contact-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody id="contact-list"></tbody>
+    </table>
+
+    <script>
+        // Create a contact list (as an array of objects) with name and address
+        var contactList = [
+            { name: 'Alice', address: '1 Road Street' },
+            { name: 'Bob', address: '2 City Town' }
+        ];
+
+        // Function to update the display
+        function updateDisplay() {
+            var contactTable = document.getElementById('contact-table');
+            var contactListBody = document.getElementById('contact-list');
+            var selectContact = document.getElementById('select-contact');
+
+            // Clear the table body and select options
+            contactListBody.innerHTML = '';
+            selectContact.innerHTML = '';
+
+            // Loop through the contact list and add rows to the table body
+            contactList.forEach(function(contact, index) {
+                var row = contactListBody.insertRow();
+                var nameCell = row.insertCell();
+                var addressCell = row.insertCell();
+
+                nameCell.textContent = contact.name;
+                addressCell.textContent = contact.address;
+
+                // Add an option to the select element for each contact
+                var option = document.createElement('option');
+                option.value = index;
+                option.textContent = contact.name;
+                selectContact.appendChild(option);
+            });
+        }
+
+        // Function to add a new contact
+        function addContact() {
+            var nameInput = document.getElementById('name');
+            var addressInput = document.getElementById('address');
+
+            var name = nameInput.value;
+            var address = addressInput.value;
+
+            // Create a new contact object
+            var newContact = { name: name, address: address };
+
+            // Add the new contact to the contact list
+            contactList.push(newContact);
+
+            // Update the display
+            updateDisplay();
+
+            // Clear the input fields
+            nameInput.value = '';
+            addressInput.value = '';
+        }
+
+        // Function to edit a contact
+        function editContact() {
+            var selectContact = document.getElementById('select-contact');
+            var selectedIndex = selectContact.value;
+
+            if (selectedIndex !== '') {
+                var nameInput = document.getElementById('name');
+                var addressInput = document.getElementById('address');
+
+                var name = nameInput.value;
+                var address = addressInput.value;
+
+                // Update the selected contact with the new values
+                contactList[selectedIndex].name = name;
+                contactList[selectedIndex].address = address;
+
+                // Update the display
+                updateDisplay();
+            }
+        }
+
+        // Function to delete a contact
+        function deleteContact() {
+            var selectContact = document.getElementById('select-contact');
+            var selectedIndex = selectContact.value;
+
+            if (selectedIndex !== '') {
+                // Remove the selected contact from the contact list
+                contactList.splice(selectedIndex, 1);
+
+                // Update the display
+                updateDisplay();
+            }
+        }
+
+        // Function to select a contact when the select item is changed
+        function selectContact() {
+            var selectContact = document.getElementById('select-contact');
+            var selectedIndex = selectContact.value;
+
+            if (selectedIndex !== '') {
+                var nameInput = document.getElementById('name');
+                var addressInput = document.getElementById('address');
+
+                // Fill the input fields with the selected contact's details
+                nameInput.value = contactList[selectedIndex].name;
+                addressInput.value = contactList[selectedIndex].address;
+            }
+        }
+
+        // Initial display update
+        updateDisplay();
+    </script>
+</body>
+</html></table>

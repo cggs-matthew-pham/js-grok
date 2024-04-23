@@ -7,29 +7,21 @@
 
 <body>
     <h1>Super Anagram!</h1>
-
     <label for="word1">Word 1:</label>
     <input type="text" id="word1">
-
     <label for="word2">Word 2:</label>
     <input type="text" id="word2">
-
-    <button onclick="checkAnagram()">Check</button>
-
-    <div id="result"></div>
-
+    <button onclick="checkAnagram()">Display Message</button>
+    <pre id="output"></pre>
     <script>
         function checkAnagram() {
             var word1 = document.getElementById("word1").value;
             var word2 = document.getElementById("word2").value;
-
             var letters1 = Array.from(word1);
             var letters2 = Array.from(word2);
             letters1.sort();
             letters2.sort();
-
             var msg = '';
-
             // Check they have the same letters
             if (letters1.join('') === letters2.join('')) {
                 // Check the first and last letters are the same
@@ -41,8 +33,7 @@
             } else {
                 msg = 'Huh?';
             }
-
-            document.getElementById("result").textContent = msg;
+            document.getElementById("output").textContent = msg;
         }
     </script>
 </body>

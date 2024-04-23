@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Did I spend too much?</title>
+</head>
+<body>
+    <h1>Did I spend too much?</h1>
+    <input type="text" id="expensesText" placeholder="Enter expenses">
+    <button id="expensesButton">Add Expenses</button>
+    <pre id="output"></pre>
+
+    <script>
+        // Define the expenses list
+        var expenses_list = [];
+
+        // Get the required elements
+        var inputText = document.getElementById("expensesText");
+        var button = document.getElementById("expensesButton");
+        var outputText = document.getElementById("output");
+
+        // Add click event listener to the button
+        button.addEventListener("click", function() {
+            // Split the input text into individual expenses
+            var new_expenses_list = inputText.value.split(" ");
+
+            // Convert each expense to an integer and add it to the expenses list
+            for (var i = 0; i < new_expenses_list.length; i++) {
+                expenses_list.push(parseInt(new_expenses_list[i]));
+            }
+
+            // Calculate the total expenses
+            var total = 0;
+            for (var i = 0; i < expenses_list.length; i++) {
+                total += expenses_list[i];
+            }
+
+            // Display the expenses list and total using a template literals
+            var msg = `Expenses: ${expenses_list}\nTotal: $${total}`;
+            outputText.textContent = msg;
+
+            // Clear the input field
+            inputText.value = "";
+        });
+    </script>
+</body>
+</html>

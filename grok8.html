@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Super Anagram!</title>
+</head>
+
+<body>
+    <h1>Super Anagram!</h1>
+
+    <label for="word1">Word 1:</label>
+    <input type="text" id="word1">
+
+    <label for="word2">Word 2:</label>
+    <input type="text" id="word2">
+
+    <button onclick="checkAnagram()">Check</button>
+
+    <div id="result"></div>
+
+    <script>
+        function checkAnagram() {
+            var word1 = document.getElementById("word1").value;
+            var word2 = document.getElementById("word2").value;
+
+            var letters1 = Array.from(word1);
+            var letters2 = Array.from(word2);
+            letters1.sort();
+            letters2.sort();
+
+            var msg = '';
+
+            // Check they have the same letters
+            if (letters1.join('') === letters2.join('')) {
+                // Check the first and last letters are the same
+                if (word1.charAt(0) === word2.charAt(0) && word1.charAt(word1.length - 1) === word2.charAt(word2.length - 1)) {
+                    msg = 'Super Anagram!';
+                } else {
+                    msg = 'Huh?';
+                }
+            } else {
+                msg = 'Huh?';
+            }
+
+            document.getElementById("result").textContent = msg;
+        }
+    </script>
+</body>
+
+</html>

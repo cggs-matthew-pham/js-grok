@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Repeaterbot</title>
+</head>
+<body>
+    <h1>Repeaterbot</h1>
+    <form>
+        <label for="message">What do you want me to say?</label>
+        <input type="text" id="message" name="message"><br><br>
+        <label for="repeatCount">How many times do you want me to say it?</label>
+        <input type="number" id="repeatCount" name="repeatCount"><br><br>
+        <button type="button" onclick="displayMessage()">Display Message</button>
+    </form>
+    <pre id="output"></pre>
+    <script>
+        function displayMessage() {
+            var message = document.getElementById("message").value;
+            var repeatCount = parseInt(document.getElementById("repeatCount").value);
+            var output = document.getElementById("output");
+
+            // Clear previous output
+            output.textContent = "";
+
+            // Display the message multiple times
+            for (var i = 0; i < repeatCount; i++) {
+                output.textContent += message + "\n";
+            }
+        }
+    </script>
+</body>
+</html>

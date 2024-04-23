@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Short/Long Names</title>
+</head>
+<body>
+    <h1>Short/Long Names</h1>
+    <form>
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name">
+        <button type="button" onclick="checkNameLength()">Display Message</button>
+    </form>
+    <pre id="output"></pre>
+
+    <script>
+        function checkNameLength() {
+            var name = document.getElementById("name").value;
+            var output = document.getElementById("output");
+
+            if (name.length <= 3) {
+                output.textContent = "Hi " + name + ", you have a short name.";
+            } else if (name.length >= 4 && name.length <= 8) {
+                output.textContent = "Hi " + name + ", nice to meet you.";
+            } else {
+                output.textContent = "Hi " + name + ", you have a long name.";
+            }
+        }
+    </script>
+
+</body>
+</html>

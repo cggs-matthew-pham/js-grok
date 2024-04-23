@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Give me a G!</title>
+</head>
+<body>
+    <h1>Give me a G!</h1>
+    <form>
+        <label for="cheerInput">Cheer:</label>
+        <input type="text" id="cheerInput" name="cheerInput">
+        <button type="button" onclick="displayCheer()">Display Message</button>
+    </form>
+    <pre id="cheerOutput"></pre>
+
+    <script>
+        function displayCheer() {
+            var cheer = document.getElementById("cheerInput").value;
+            var output = "";
+
+            for (var i = 0; i < cheer.length; i++) {
+                var letter = cheer.charAt(i);
+                // use template literals to build the output string
+                output += `Give me a ${letter}, ${letter}!\n`;
+            }
+
+            output += `What does it spell?\n${cheer.toUpperCase()}`;
+            document.getElementById("cheerOutput").innerHTML = output;
+        }
+    </script>
+
+</body>
+</html>

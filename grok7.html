@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Up the downstair</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Up the downstair</h1>
+    <form>
+        <label for="stepSize">Step Size (Max 50):</label>
+        <input type="number" id="stepSize" min="1" max="50" required>
+        <button type="button" onclick="drawStaircase()">Draw Staircase</button>
+    </form>
+    <canvas id="staircaseCanvas" width="250" height="250"></canvas>
+
+    <script>
+        const form = document.querySelector('form');
+        const canvas = document.getElementById('staircaseCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawStaircase() {
+            const stepSize = parseInt(document.getElementById('stepSize').value);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            let x = 0;
+            let y = 0;
+            ctx.moveTo(x, y);
+            while (x < 150) {
+                x += stepSize;
+                ctx.lineTo(x, y);
+                y += stepSize;
+                ctx.lineTo(x, y);
+            }
+            x = 0;
+            ctx.lineTo(x, y);
+            ctx.closePath();
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

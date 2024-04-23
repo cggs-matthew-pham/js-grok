@@ -1,0 +1,29 @@
+<!--Create a webpage for inputting 3 friend's names and displaying a message containing all the names-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello to you three!</title>
+    </head>
+    <body>
+        <h1>Hello to you three!</h1>
+        <form>
+            <label for="friend1">Friend 1:</label>
+            <input type="text" id="friend1" name="friend1"><br>
+            <label for="friend2">Friend 2:</label>
+            <input type="text" id="friend2" name="friend2"><br>
+            <label for="friend3">Friend 3:</label>
+            <input type="text" id="friend3" name="friend3"><br>
+            <button type="button" onclick="displayMessage()">Submit</button>
+        </form>
+        <pre id="output"></pre>
+        <script>
+            function displayMessage() {
+                var friend1 = document.getElementById("friend1").value;
+                var friend2 = document.getElementById("friend2").value;
+                var friend3 = document.getElementById("friend3").value;
+                var message = `Hello, young ${friend1}\n` +
+                `Hello, brave ${friend2}\nHello, wise ${friend3}`
+                document.getElementById("output").textContent = message;
+            }
+        </script>
+    </body>

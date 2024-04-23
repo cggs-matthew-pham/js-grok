@@ -1,5 +1,3 @@
-<form>
-<!DOCTYPE html>
 <!DOCTYPE html>
 <head>
     <title>Method of transportation</title>
@@ -13,7 +11,7 @@
         <label for="distance" disabled>Enter the distance you need to travel (in km):</label>
         <input type="number" id="distance" name="distance" disabled>
         <br>
-        <button id="displayButton"  type="button" onclick="displayTransport()" disabled>Submit</button>
+        <button id="displayButton"  type="button" onclick="displayTransport()" disabled>Display Message</button>
     </form>
 
     <pre id="message"></pre>
@@ -26,19 +24,19 @@
             let message;
 
             if (isRaining) {
-                message = "Take the bus";
+                message = "You should take the bus.";
             } else {
                 if (!distance || distance === "") {
-                    message = "Enter the distance to travel and click Submit"
+                    message = "Enter the distance to travel and click 'Display Message'"
                     // Enable the distance input and submit button
                     document.getElementById("distance").disabled = false;
                     document.getElementById("displayButton").disabled = false;
                 } else if (distance > 10) {
-                    message = "Take the bus";
+                    message = "You should take the bus.";
                 } else if (distance >= 2) {
-                    message = "Ride your bike";
+                    message = "You should ride your bike.";
                 } else {
-                    message = "Walk";
+                    message = "You should walk.";
                 }
             }
 
